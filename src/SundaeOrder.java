@@ -1,9 +1,13 @@
 import java.util.Scanner;
 
 public class SundaeOrder {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    private Scanner scanner;
 
+    public SundaeOrder() {
+        this.scanner = new Scanner(System.in);
+    }
+
+    public String orderSundae() {
         System.out.println("Our shop is known for our Hot fudge sundaes!");
         System.out.println("Pick your flavor...");
         System.out.println("1.) Banana Split");
@@ -13,7 +17,7 @@ public class SundaeOrder {
         System.out.print("Enter your choice: ");
         int choice = scanner.nextInt();
 
-        String flavor = ""; // Initialize with an empty string or a default message.
+        String flavor = "";
         switch (choice) {
             case 1:
                 flavor = "Banana Split";
@@ -26,13 +30,13 @@ public class SundaeOrder {
                 break;
             default:
                 System.out.println("Invalid choice. Please choose a number between 1 and 3.");
-                break;
+                return null; // Return null to indicate an invalid choice.
         }
 
-        if (!flavor.isEmpty()) {
-            System.out.println("You chose: " + flavor + ". Enjoy your sundae!");
-        }
+        return flavor;
+    }
 
+    public void closeScanner() {
         scanner.close();
     }
 }

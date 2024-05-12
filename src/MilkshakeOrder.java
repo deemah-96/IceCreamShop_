@@ -1,9 +1,14 @@
 import java.util.Scanner;
 
 public class MilkshakeOrder {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    private Scanner scanner; // Declare the scanner object
 
+    // Constructor accepts an existing Scanner object
+    public MilkshakeOrder(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    public void orderMilkshake() {
         System.out.println("Our shop is known for our Strawberry Milkshakes!");
         System.out.println("Pick your flavor...");
         System.out.println("1.) Chocolate");
@@ -13,44 +18,39 @@ public class MilkshakeOrder {
 
         System.out.print("Enter your choice: ");
         int choice = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline
 
         String flavor;
         switch (choice) {
             case 1:
                 flavor = "Chocolate";
-                System.out.println("You chose Chocolate.");
                 break;
             case 2:
                 flavor = "Vanilla";
-                System.out.println("You chose Vanilla.");
                 break;
             case 3:
                 flavor = "Strawberry";
-                System.out.println("You chose Strawberry.");
                 break;
             case 4:
                 flavor = "Cookies and Cream";
-                System.out.println("You chose Cookies and Cream.");
                 break;
             default:
                 System.out.println("Invalid choice. Please choose a number between 1 and 4.");
-                return;
+                return; // Early return on invalid choice
         }
-
 
         System.out.print("Do you want whipped cream? (Yes or No): ");
         boolean whippedCream = scanner.next().equalsIgnoreCase("Yes");
+        scanner.nextLine(); // Consume the newline
 
-
-        System.out.print("Do you want cherry? (Yes or No): ");
+        System.out.print("Do you want a cherry on top? (Yes or No): ");
         boolean cherry = scanner.next().equalsIgnoreCase("Yes");
-
+        scanner.nextLine(); // Consume the newline
 
         System.out.println("Your order summary:");
         System.out.println("Flavor: " + flavor + " Milkshake");
         System.out.println("Whipped Cream: " + (whippedCream ? "Yes" : "No"));
         System.out.println("Cherry: " + (cherry ? "Yes" : "No"));
-
-        scanner.close();
     }
 }
+
