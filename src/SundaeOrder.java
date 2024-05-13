@@ -3,11 +3,11 @@ import java.util.Scanner;
 public class SundaeOrder {
     private Scanner scanner;
 
-    public SundaeOrder() {
-        this.scanner = new Scanner(System.in);
-    }
+   public SundaeOrder(Scanner scanner){
+       this.scanner = scanner;
+   }
 
-    public String orderSundae() {
+    public double orderSundae() {
         System.out.println("Our shop is known for our Hot fudge sundaes!");
         System.out.println("Pick your flavor...");
         System.out.println("1.) Banana Split");
@@ -16,24 +16,25 @@ public class SundaeOrder {
 
         System.out.print("Enter your choice: ");
         int choice = scanner.nextInt();
+        scanner.nextLine();
 
-        String flavor = "";
+        double cost = 0.0;
         switch (choice) {
             case 1:
-                flavor = "Banana Split";
+                System.out.println("Banana Split selected.");
                 break;
             case 2:
-                flavor = "Strawberry Shortcake";
+                System.out.println("Strawberry Shortcake selected.");
                 break;
             case 3:
-                flavor = "Pazookie";
+                System.out.println("Pazookie selected.");
                 break;
             default:
                 System.out.println("Invalid choice. Please choose a number between 1 and 3.");
-                return null; // Return null to indicate an invalid choice.
+                return 0;
         }
 
-        return flavor;
+        return cost;
     }
 
     public void closeScanner() {
