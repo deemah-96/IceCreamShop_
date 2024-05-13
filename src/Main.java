@@ -16,9 +16,23 @@ public class Main {
             System.out.println("1. Ice cream");
             System.out.println("2. Sundae");
             System.out.println("3. Milkshakes");
-            System.out.println("Select the number of what you would like to order: ");
-            int selectOrder = input.nextInt();
-            input.nextLine(); // Cnsume newline left-over - critical to prevent skipping inputs
+            int selectOrder = 0;
+            boolean validSelection = false;
+            while (!validSelection) {
+                System.out.println("Select the number of what you would like to order: ");
+                if (input.hasNext()) {
+                    selectOrder = input.nextInt();
+                    input.nextLine();
+                    if (selectOrder >= 1 && selectOrder <= 3) {
+                        validSelection = true;
+                    } else {
+                        System.out.println("Invalid selection. Please select a valid option.");
+                    }
+                } else {
+                    System.out.println("Invalid selection. Please select a valid option.");
+                    input.next();
+                }
+            }
 
             double sizeCost = askForSizeAndCalculateCost(input);
             if (sizeCost == 0) {  // If invalid size or cancel, skip this order.
@@ -57,19 +71,31 @@ public class Main {
         System.out.println("Medium: $3.99");
         System.out.println("Large: $5.99");
         System.out.println("Please keep in mind that toppings are an additional .25 cents each.");
-        System.out.print("Enter your choice : ");
-        String sizeChoice = input.nextLine().toLowerCase();
+       String sizeChoice;
+       double cost = 0;
+       boolean validSizeSelected = false;
+       while (!validSizeSelected) {
+           System.out.print("Enter your choice : ");
+           sizeChoice = input.nextLine().toLowerCase();
 
         switch (sizeChoice) {
             case "small":
-                return 2.99;
+                cost = 2.99;
+                validSizeSelected = true;
+                break;
             case "medium":
-                return 3.99;
+                cost = 3.99;
+                validSizeSelected = true;
+                break;
             case "large":
-                return 5.99;
+                cost = 5.99;
+                validSizeSelected = true;
+                break;
             default:
-                System.out.println("Invalid size selected.");
-                return 0;  // Return 0 to indicate an invalid selection
+                System.out.println("Invalid size selected. Please select again.");
+                break;
         }
     }
+    return cost;
+}
 }
