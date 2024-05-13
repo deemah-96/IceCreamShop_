@@ -33,6 +33,7 @@ public class Flavors extends BaseOrder {
     }
 
     // Method to prompt user for flavor selection
+
     private String askFlavor() {
         System.out.println("Our shop is best known for our vanilla flavor and house-made waffle cone!");
         System.out.println("But you may choose from the following flavors: Vanilla, Chocolate, Strawberry, Cookie Dough, Cotton Candy");
