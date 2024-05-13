@@ -1,6 +1,11 @@
 import java.util.Scanner;
 
+/**
+ * The Main class manages the ordering process for an ice cream shop. It supports ordering ice creams, sundaes, and milkshakes.
+ * The class also handles user input for selecting items and sizes, and calculates the total cost.
+ */
 public class Main {
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Flavors flavorOrder = new Flavors(input); // Handles all ice cream-related orders
@@ -65,6 +70,12 @@ public class Main {
         input.close();  // Close the main scanner
     }
 
+    /**
+     * Prompts the user to select a size for their order and calculates the corresponding costs.
+     * Additional charges are added for toppings.
+     * @param input the Scanner to use for reading user input
+     * @return the cost of the selected size or 0 if an invalid size is chosen
+     */
     private static double askForSizeAndCalculateCost(Scanner input) {
         System.out.println("Please select the size you would like:");
         System.out.println("Small: $2.99");
